@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
+import Grid from '../Grid';
 import * as C from './styles';
 
-export default function Form({ handleAdd }) {
+export default function Form({
+  handleAdd,
+  transactionList,
+  setTransactionsList,
+}) {
   const [desc, setDesc] = useState('');
   const [amount, setAmount] = useState('');
   const [isExpense, setExpense] = useState(false);
@@ -30,38 +35,41 @@ export default function Form({ handleAdd }) {
   };
 
   return (
-    <C.Container>
-      <C.InputContent>
-        <C.Label>Descrição</C.Label>
-        <C.Input value={desc} onChange={(e) => setDesc(e.target.value)} />
-      </C.InputContent>
-      <C.InputContent>
-        <C.Label>Valor</C.Label>
-        <C.Input
-          value={amount}
-          type="number"
-          onChange={(e) => setAmount(e.target.value)}
-        />
-      </C.InputContent>
-      <C.RadioGroup>
-        <C.Input
-          type="radio"
-          id="rIncome"
-          defaultChecked
-          name="group1"
-          onChange={(e) => setExpense(!isExpense)}
-        />
-        <C.Label htmlFor="rIncome">Entrada</C.Label>
-        <C.Input
-          type="radio"
-          id="rExpenses"
-          defaultChecked
-          name="group1"
-          onChange={(e) => setExpense(!isExpense)}
-        />
-        <C.Label htmlFor="rExpenses">Saída</C.Label>
-      </C.RadioGroup>
-      <C.Button onClick={handleSave}>ADICIONAR</C.Button>
-    </C.Container>
+    <>
+      <C.Container>
+        <C.InputContent>
+          <C.Label>Descrição</C.Label>
+          <C.Input value={desc} onChange={(e) => setDesc(e.target.value)} />
+        </C.InputContent>
+        <C.InputContent>
+          <C.Label>Valor</C.Label>
+          <C.Input
+            value={amount}
+            type="number"
+            onChange={(e) => setAmount(e.target.value)}
+          />
+        </C.InputContent>
+        <C.RadioGroup>
+          <C.Input
+            type="radio"
+            id="rIncome"
+            defaultChecked
+            name="group1"
+            onChange={(e) => setExpense(!isExpense)}
+          />
+          <C.Label htmlFor="rIncome">Entrada</C.Label>
+          <C.Input
+            type="radio"
+            id="rExpenses"
+            defaultChecked
+            name="group1"
+            onChange={(e) => setExpense(!isExpense)}
+          />
+          <C.Label htmlFor="rExpenses">Saída</C.Label>
+        </C.RadioGroup>
+        <C.Button onClick={handleSave}>ADICIONAR</C.Button>
+      </C.Container>
+      <Grid itens={transactionList} setItens={setTransactionsList} />
+    </>
   );
 }
