@@ -7,12 +7,12 @@ import {
   FaRegArrowAltCircleUp,
 } from 'react-icons/fa';
 
-export default function Resume() {
+export default function Resume({ income, expense, total }) {
   return (
     <C.Container>
-      <ResumeItem title="Entradas" Icon={FaRegArrowAltCircleUp} value="1000" />
-      <ResumeItem title="Saídas" Icon={FaRegArrowAltCircleDown} value="1000" />
-      <ResumeItem title="Total" Icon={FaDollarSign} value="1000" />
+      <ResumeItem title="Entradas" Icon={FaRegArrowAltCircleUp} value={income} />
+      <ResumeItem title="Saídas" Icon={FaRegArrowAltCircleDown} value={expense} />
+      <ResumeItem title="Total" Icon={FaDollarSign} value={total} />
     </C.Container>
   );
 }
