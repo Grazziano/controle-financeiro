@@ -4,7 +4,7 @@ import * as C from './styles';
 
 export default function Form({
   handleAdd,
-  transactionList,
+  transactionsList,
   setTransactionsList,
 }) {
   const [desc, setDesc] = useState('');
@@ -55,21 +55,20 @@ export default function Form({
             id="rIncome"
             defaultChecked
             name="group1"
-            onChange={(e) => setExpense(!isExpense)}
+            onChange={() => setExpense(!isExpense)}
           />
           <C.Label htmlFor="rIncome">Entrada</C.Label>
           <C.Input
             type="radio"
             id="rExpenses"
-            defaultChecked
             name="group1"
-            onChange={(e) => setExpense(!isExpense)}
+            onChange={() => setExpense(!isExpense)}
           />
           <C.Label htmlFor="rExpenses">Saída</C.Label>
         </C.RadioGroup>
         <C.Button onClick={handleSave}>ADICIONAR</C.Button>
       </C.Container>
-      <Grid itens={transactionList} setItens={setTransactionsList} />
+      <Grid itens={transactionsList} setItens={setTransactionsList} />
     </>
   );
 }
